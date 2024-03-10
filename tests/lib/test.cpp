@@ -12,7 +12,6 @@ void Check(const Matrix<T>& actual,
     for (size_t i = 0; i < actual.Rows(); i++) {
         REQUIRE(expected[i].size() == actual.Cols());
         for (size_t j = 0; j < actual.Cols(); j++) {
-            std::cout << actual.Data()[i][j] << " " << expected[i][j] << "\n";
             if (actual.Data()[i][j] != expected[i][j]) {
                 FAIL(actual.Data()[i][j] << " != " << expected[i][j]);
             }
