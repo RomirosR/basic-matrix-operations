@@ -45,3 +45,13 @@ TEST_CASE("Matrix has constructors") {
     REQUIRE(mat2.Empty());
     Check(mat6, a);
 }
+
+TEST_CASE("Matrix addition"){
+    Matrix<int> a({{1, 2}, {3, 4}});
+    Matrix<int> b({{0, 1}, {1, 0}});
+
+    Check(a + b, {{1, 3}, {4, 4}});
+
+    a += b;
+    Check(a, {{1, 3}, {4, 4}});
+}
