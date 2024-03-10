@@ -164,3 +164,13 @@ template <class T>
 Matrix<T>& Matrix<T>::operator*=(const Matrix<T>& other) {
     return *this = (*this * other);
 }
+
+template <class T>
+bool Matrix<T>::operator==(const Matrix<T>& other) {
+    return data_ == other.data_;
+}
+
+template <class T>
+bool Matrix<T>::operator!=(const Matrix<T>& other) {
+    return data_ != other.data_;
+}
