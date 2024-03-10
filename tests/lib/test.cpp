@@ -90,7 +90,7 @@ TEST_CASE("Matrix subtraction") {
     REQUIRE_THROWS(a - b);
 }
 
-TEST_CASE("Matrix subtraction") {
+TEST_CASE("Matrix multiplication") {
     Matrix<int> a({{1, 2}, {2, 1}});
     Matrix<int> b({{3, 1}, {3, 3}});
 
@@ -106,4 +106,17 @@ TEST_CASE("Matrix subtraction") {
     a = Matrix<int>(2, 3);
     b = Matrix<int>(9, 12);
     REQUIRE_THROWS(a * b);
+}
+
+TEST_CASE("Matrix multiplication by scalar") {
+    Matrix<int> a({{1, 2}, {2, 1}});
+
+    Check(a * 2, {{2, 4}, {4, 2}});
+
+    a *= 2;
+    Check(a, {{2, 4}, {4, 2}});
+
+    a = Matrix<int>({{1, 2}, {3, 4}, {5, 6}});
+
+    REQUIRE((2 * a) == (a * 2));
 }
