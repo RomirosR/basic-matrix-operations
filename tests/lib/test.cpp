@@ -73,10 +73,10 @@ TEST_CASE("Matrix subtraction") {
     Matrix<int> a({{1, 2}, {3, 4}});
     Matrix<int> b({{0, 1}, {1, 0}});
 
-    Check(a - b, {{0, 1}, {2, 4}});
+    Check(a - b, {{1, 1}, {2, 4}});
 
     a -= b;
-    Check(a, {{0, 1}, {2, 4}});
+    Check(a, {{1, 1}, {2, 4}});
 
     a = Matrix<int>({{1, 2}, {3, 4}, {5, 6}});
     b = Matrix<int>({{1, 1}, {2, 2}, {3, 3}});
