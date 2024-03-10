@@ -39,6 +39,10 @@ class Matrix {
     Matrix& operator+=(const Matrix& other);
 
     Matrix operator+(const Matrix& other);
+
+    Matrix& operator-=(const Matrix& other);
+
+    Matrix operator-(const Matrix& other);
 };
 
 template <class T>
