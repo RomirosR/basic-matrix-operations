@@ -54,8 +54,6 @@ class Matrix {
 
     Matrix operator*(const T& value);
 
-    friend Matrix<T> operator*(const T& value, const Matrix<T>& mat);
-
     Matrix& operator*=(const T& value);
 };
 
@@ -180,3 +178,6 @@ template <class T>
 bool Matrix<T>::operator!=(const Matrix<T>& other) const {
     return data_ != other.data_;
 }
+
+template <class T>
+Matrix<T> operator*(const T& value, const Matrix<T>& mat);
