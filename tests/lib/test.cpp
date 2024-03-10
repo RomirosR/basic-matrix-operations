@@ -89,3 +89,21 @@ TEST_CASE("Matrix subtraction") {
     b = Matrix<int>(9, 12);
     REQUIRE_THROWS(a - b);
 }
+
+TEST_CASE("Matrix subtraction") {
+    Matrix<int> a({{1, 2}, {2, 1}});
+    Matrix<int> b({{3, 1}, {3, 3}});
+
+    Check(a * b, {{9, 7}, {9, 5}});
+
+    a *= b;
+    Check(a, {{9, 7}, {9, 5}});
+
+    a = Matrix<int>({{1, 2}, {3, 4}, {5, 6}});
+    b = Matrix<int>({{3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7}});
+    Check(a * b, {{5, 8, 11, 14, 17, 20, 23}, {13, 20, 27, 34, 41, 48, 55}, {21, 32, 43, 54, 65, 76, 87}});
+
+    a = Matrix<int>(2, 3);
+    b = Matrix<int>(9, 12);
+    REQUIRE_THROWS(a * b);
+}
