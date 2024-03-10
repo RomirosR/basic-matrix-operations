@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstddef>
-#include <vector>
 #include <stdexcept>
+#include <vector>
 
 template <class T>
 class Matrix {
@@ -138,4 +138,25 @@ Matrix<T> Matrix<T>::operator-(const Matrix<T>& other) {
     Matrix<T> temp(*this);
     temp -= other;
     return temp;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) {
+    if (Cols() != other.Rows()) {
+        throw std::invalid_argument("Dimensions don't match");
+    }
+    Matrix<T> temp(Rows(), other.Cols());
+    for (std::size_t i = 0; i < Rows(); i++) {
+        for (std::size_t j = 0; j < other.Cols(); j++) {
+            for (std::size_t k = 0; k < Cols(); k++) {
+                temp.data_[i][j] += data_[i][k] * other.data_[k][j];
+            }
+        }
+    }
+    return temp;
+}
+
+template <class T>
+Matrix<T>& Matrix<T>::operator*=(const Matrix<T>& other) {
+    return *this = (*this * other);
 }
