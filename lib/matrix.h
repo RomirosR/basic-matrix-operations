@@ -115,3 +115,23 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& other) {
     temp += other;
     return temp;
 }
+
+template <class T>
+Matrix<T>& Matrix<T>::operator-=(const Matrix<T>& other) {
+    if (Rows() != other.Rows() || Cols() != other.Cols()) {
+        throw std::invalid_argument("Dimensions don't match");
+    }
+    for (std::size_t i = 0; i < Rows(); i++) {
+        for (std::size_t j = 0; j < Cols(); j++) {
+            data_[i][j] -= other.data_[i][j];
+        }
+    }
+    return *this;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::operator-(const Matrix<T>& other) {
+    Matrix<T> temp(*this);
+    temp -= other;
+    return temp;
+}
