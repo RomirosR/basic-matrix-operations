@@ -52,7 +52,7 @@ class Matrix {
 
     bool operator!=(const Matrix& other) const;
 
-    Matrix operator*(const T& value);
+    Matrix operator*(const T& value) const;
 
     Matrix& operator*=(const T& value);
 };
@@ -180,4 +180,23 @@ bool Matrix<T>::operator!=(const Matrix<T>& other) const {
 }
 
 template <class T>
-Matrix<T> operator*(const T& value, const Matrix<T>& mat);
+Matrix<T>& Matrix<T>::operator*=(const T& value) {
+    for (std::size_t i = 0; i < Rows(); i++) {
+        for (std::size_t j = 0; j < Cols(); j++) {
+            data_[i][j] *= value;
+        }
+    }
+    return *this;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::operator*(const T& value) const {
+    Matrix<T> temp(*this);
+    temp *= value;
+    return temp;
+}
+
+template <class T>
+Matrix<T> operator*(const T& value, const Matrix<T>& mat) {
+    return (mat * value);
+}
