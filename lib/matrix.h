@@ -34,6 +34,10 @@ class Matrix {
     bool Empty() const;
 
     const std::vector<std::vector<T>>& Data() const;
+
+    Matrix& operator+=(const Matrix& other);
+
+    Matrix& operator+(const Matrix& other);
 };
 
 template <class T>
